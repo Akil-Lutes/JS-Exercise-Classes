@@ -89,7 +89,7 @@ class Airplane {
 
   // const blackMan = new Person ({
   //   name: 'Akil',
-  //   age: '29',
+  //   age: 29,
   // })
 
 
@@ -110,7 +110,8 @@ class Airplane {
   
  class Car {
    constructor(model, milesPerGallon) {
-    this.
+    this.odometer
+    this.tank
    }
     
   }
@@ -127,9 +128,48 @@ class Airplane {
           + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
           + {name} and {location} of course come from the instance's own properties.
   */
+
+  // Task asked me to put the 3 properties as param objects. 
  class Lambdasian {
-    
+  constructor({name, age, location}) {
+    this.name = name;
+    this.age = age;
+    this.location = location;
   }
+
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}.`
+  }
+}
+
+// Remember to set the properties to the params.
+const blackMan = new Lambdasian ({name: 'Akil', age: 29, location: 'North Carolina'
+  })
+
+
+console.log(blackMan);
+console.log(blackMan.speak());
+  
+
+// I would also like to construct classes this way with the attrs parameter
+// class Lambdasian {
+//   constructor(attrs) {
+//     this.name = attrs.name;
+//     this.age = attrs.age;
+//     this.location = attrs.location;
+//   }
+
+//   speak() {
+//     return `Hello my name is ${this.name}, I am from ${this.location}.`
+//   }
+// }
+
+// Remember to set the properties to the params.
+  // const blackGuy = new Lambdasian ({
+  //   name: 'Akil',
+  //   age: 29,
+  //   location: 'Frisco, Texas',
+  // })
   
   /*
     TASK 4
