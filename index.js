@@ -9,18 +9,18 @@
 */
 
 // EXAMPLE SOLUTION CODE:
-class Airplane {
-    constructor(name) {
-      this.name = name;
-      this.isFlying = false;
-    }
-    takeOff() {
-      this.isFlying = true;
-    }
-    land() {
-      this.isFlying = false;
-    }
-  }
+// class Airplane {
+//     constructor(name) {
+//       this.name = name;
+//       this.isFlying = false;
+//     }
+//     takeOff() {
+//       this.isFlying = true;
+//     }
+//     land() {
+//       this.isFlying = false;
+//     }
+//   }
   
   /*
   // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -203,7 +203,7 @@ console.log(blackMan.speak());
   */
  class Instructor extends Lambdasian {
   constructor({instructorAttrs}) {
-    super (instructorAttrs)
+    super ({instructorAttrs})
     this.specialty =  instructorAttrs.specialty;
     this.favLanguage = instructorAttrs.favLanguage;
     this.catchPhrase = instructorAttrs.catchPhrase;
@@ -216,6 +216,8 @@ console.log(blackMan.speak());
   grade({student, subject}){
     return `${student.name} receives a perfect score on ${subject}`
  }
+
+}
   /*
     TASK 5
       - Write a Student class extending Lambdasian.
@@ -234,22 +236,25 @@ console.log(blackMan.speak());
 
  class Student extends Lambdasian {
   constructor ({instructorAttrs}) {
-    super (instructorAttrs);
-      this.previousBackground = intructorAttrs.previousBackground;
-      this.className = intructorAttrs.className;
-      this.favSubjects = intructorAttrs.favSubjects;
+    super ({instructorAttrs});
+      this.previousBackground = instructorAttrs.previousBackground;
+      this.className = instructorAttrs.className;
+      this.favSubjects = instructorAttrs.favSubjects;
   }
 
-  listSubjects(favSubjects) {
+  listSubjects() {
+    //I didn't need a parameter bc I am using the properties inside the Student constructor under super.
     return `Loving ${this.favSubjects}!`
   }
 
   PRAssignment(subject) {
-    return `${student.name} has submitted a PR for ${subject}`
+    // I needed to type 'this.name' because I am using subject param from the Instructor subclass
+    return `${this.name} has submitted a PR for ${subject}`
   }
 
   sprintChallenge(subject) {
-    return `${student.name} has begun sprint challenge on ${subject}`
+    // I needed to type 'this.name' because I am using subject param from the Instructor subclass
+    return `${this.name} has begun sprint challenge on ${subject}`
   }
 }
   
@@ -266,8 +271,21 @@ console.log(blackMan.speak());
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+ class ProjectManager extends Instructor {
+  constructor({instructorAttrs}){
+    super({instructorAttrs})
+      this.gradClassName = instructorAttrs.gradClassName;
+      this.favInstructor = instructorAttrs.favInstructor;
+  }
+
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel study times!`
+  }
+
+  debugsCode(student, subject) {
+    // I feel like I don't use this.xxx whenever the parameter is in the function parenthesis ex. subject
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  }
  }
   /*
     STRETCH PROBLEM (no tests!)
